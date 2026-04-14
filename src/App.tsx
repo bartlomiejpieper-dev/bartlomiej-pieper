@@ -1,6 +1,8 @@
-import { Linkedin, Mail, Github, ExternalLink } from 'lucide-react'
+import { Linkedin, Mail, GitBranch, ExternalLink } from 'lucide-react'
+import { Button } from '@/components/ui/button'
+import { Badge } from '@/components/ui/badge'
+import { Separator } from '@/components/ui/separator'
 
-// Portfolio data
 const experiences = [
   {
     title: 'Senior .NET Developer',
@@ -61,6 +63,7 @@ function App() {
   return (
     <main className="min-h-screen bg-background">
       <div className="mx-auto max-w-3xl px-6 py-24">
+
         {/* Hero Section */}
         <section className="mb-24">
           <h1 className="text-4xl font-bold tracking-tight text-foreground sm:text-5xl">
@@ -70,26 +73,26 @@ function App() {
             .NET Developer · Finance & AI
           </p>
           <p className="mt-6 text-lg leading-relaxed text-muted">
-            8+ years in fintech (Citi, Deutsche Bank, Nordea) — building robust backend systems, 
+            8+ years in fintech (Citi, Deutsche Bank, Nordea) — building robust backend systems,
             currently transitioning towards AI.
           </p>
-          <div className="mt-8 flex gap-4">
-            <a
-              href="https://linkedin.com/in/bartlomiej-pieper"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-md bg-accent px-5 py-2.5 text-sm font-medium text-background transition-opacity hover:opacity-90"
-            >
-              <Linkedin className="h-4 w-4" />
-              LinkedIn
-            </a>
-            <a
-              href="mailto:contact@bartlomiejpieper.dev"
-              className="inline-flex items-center gap-2 rounded-md border border-accent px-5 py-2.5 text-sm font-medium text-accent transition-colors hover:bg-accent/10"
-            >
-              <Mail className="h-4 w-4" />
-              Email
-            </a>
+          <div className="mt-8 flex flex-wrap gap-3">
+            <Button asChild variant="default">
+              <a
+                href="https://linkedin.com/in/bartlomiej-pieper"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Linkedin className="h-4 w-4" />
+                LinkedIn
+              </a>
+            </Button>
+            <Button asChild variant="outline">
+              <a href="mailto:contact@bartlomiejpieper.dev">
+                <Mail className="h-4 w-4" />
+                Email
+              </a>
+            </Button>
           </div>
         </section>
 
@@ -99,9 +102,9 @@ function App() {
             About
           </h2>
           <p className="text-lg leading-relaxed text-foreground">
-            I specialize in building high-performance backend systems for the financial sector. 
-            My experience spans investment banking, wealth management, and fintech startups, 
-            where I have delivered solutions that handle critical financial data at scale. 
+            I specialize in building high-performance backend systems for the financial sector.
+            My experience spans investment banking, wealth management, and fintech startups,
+            where I have delivered solutions that handle critical financial data at scale.
             Currently exploring the intersection of traditional software engineering and AI.
           </p>
         </section>
@@ -113,12 +116,10 @@ function App() {
           </h2>
           <div className="space-y-12">
             {experiences.map((exp, index) => (
-              <div key={index} className="group">
+              <div key={index}>
                 <div className="flex flex-col justify-between gap-1 sm:flex-row sm:items-baseline">
                   <div>
-                    <h3 className="text-lg font-semibold text-foreground">
-                      {exp.title}
-                    </h3>
+                    <h3 className="text-lg font-semibold text-foreground">{exp.title}</h3>
                     <p className="text-accent">{exp.company}</p>
                   </div>
                   <span className="text-sm text-muted">{exp.dates}</span>
@@ -146,12 +147,7 @@ function App() {
               <h3 className="mb-4 text-sm font-medium text-foreground">Backend</h3>
               <div className="flex flex-wrap gap-2">
                 {techStack.backend.map((tech) => (
-                  <span
-                    key={tech}
-                    className="rounded-md bg-foreground/5 px-3 py-1.5 text-sm text-muted"
-                  >
-                    {tech}
-                  </span>
+                  <Badge key={tech}>{tech}</Badge>
                 ))}
               </div>
             </div>
@@ -159,12 +155,7 @@ function App() {
               <h3 className="mb-4 text-sm font-medium text-foreground">Cloud & AI</h3>
               <div className="flex flex-wrap gap-2">
                 {techStack.cloud.map((tech) => (
-                  <span
-                    key={tech}
-                    className="rounded-md bg-foreground/5 px-3 py-1.5 text-sm text-muted"
-                  >
-                    {tech}
-                  </span>
+                  <Badge key={tech}>{tech}</Badge>
                 ))}
               </div>
             </div>
@@ -172,12 +163,7 @@ function App() {
               <h3 className="mb-4 text-sm font-medium text-foreground">Frontend</h3>
               <div className="flex flex-wrap gap-2">
                 {techStack.frontend.map((tech) => (
-                  <span
-                    key={tech}
-                    className="rounded-md bg-foreground/5 px-3 py-1.5 text-sm text-muted"
-                  >
-                    {tech}
-                  </span>
+                  <Badge key={tech}>{tech}</Badge>
                 ))}
               </div>
             </div>
@@ -200,38 +186,41 @@ function App() {
         </section>
 
         {/* Contact / Footer */}
-        <footer className="border-t border-foreground/10 pt-12">
+        <Separator className="mb-12" />
+        <footer>
           <div className="flex items-center justify-center gap-8">
-            <a
-              href="mailto:contact@bartlomiejpieper.dev"
-              className="flex items-center gap-2 text-muted transition-colors hover:text-accent"
-            >
-              <Mail className="h-5 w-5" />
-              <span className="text-sm">Email</span>
-            </a>
-            <a
-              href="https://linkedin.com/in/bartlomiej-pieper"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 text-muted transition-colors hover:text-accent"
-            >
-              <Linkedin className="h-5 w-5" />
-              <span className="text-sm">LinkedIn</span>
-            </a>
-            <a
-              href="https://github.com/bartlomiejpieper"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 text-muted transition-colors hover:text-accent"
-            >
-              <Github className="h-5 w-5" />
-              <span className="text-sm">GitHub</span>
-            </a>
+            <Button asChild variant="ghost" size="sm">
+              <a href="mailto:contact@bartlomiejpieper.dev">
+                <Mail className="h-5 w-5" />
+                Email
+              </a>
+            </Button>
+            <Button asChild variant="ghost" size="sm">
+              <a
+                href="https://linkedin.com/in/bartlomiej-pieper"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Linkedin className="h-5 w-5" />
+                LinkedIn
+              </a>
+            </Button>
+            <Button asChild variant="ghost" size="sm">
+              <a
+                href="https://github.com/bartlomiejpieper"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <GitBranch className="h-5 w-5" />
+                GitHub
+              </a>
+            </Button>
           </div>
           <p className="mt-8 text-center text-sm text-muted">
             &copy; {new Date().getFullYear()} Bartlomiej Pieper
           </p>
         </footer>
+
       </div>
     </main>
   )
