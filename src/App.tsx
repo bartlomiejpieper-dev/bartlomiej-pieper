@@ -1,5 +1,6 @@
 import { Linkedin, Mail, Github, ExternalLink } from 'lucide-react'
 
+// Portfolio data
 const experiences = [
   {
     title: 'Senior .NET Developer',
