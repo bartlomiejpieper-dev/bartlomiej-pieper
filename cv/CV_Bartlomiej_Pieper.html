@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>Bartłomiej Pieper — CV</title>
+<style>
+:root {
+  --ink: #1a1d23;
+  --text: #33373d;
+  --muted: #5b626b;
+  --green: #2f7d4f;
+  --green-dark: #246240;
+  --tag-bg: #eef5ef;
+  --line: #dee1e6;
+
+  /* Spacing scale */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-6: 24px;
+
+  /* Local/system stacks only: no external font dependency. */
+  --sans: Arial, "Liberation Sans", sans-serif;
+  --mono: Consolas, "Liberation Mono", "Courier New", monospace;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  background: #f5f6f7;
+  color: var(--text);
+  font-family: var(--sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: geometricPrecision;
+}
+a { color: inherit; text-decoration: none; }
+.page {
+  width: 793px;
+  height: 1121px;
+  margin: 20px auto;
+  padding: 28px 40px 26px;
+  background: #fff;
+  box-shadow: 0 1px 5px rgba(0,0,0,.18);
+  overflow: hidden;
+}
+.header-name {
+  margin: 0;
+  color: var(--ink);
+  font: 800 29px/1.15 var(--mono);
+  letter-spacing: -.5px;
+}
+.header-role {
+  margin-top: var(--space-1);
+  color: var(--green);
+  font: 500 13px/1.3 var(--mono);
+}
+.contact-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin-top: 6px;
+  color: var(--muted);
+  font: 600 10.8px/1.2 var(--sans);
+  white-space: nowrap;
+}
+.contact-item {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+}
+.contact-item svg {
+  width: 11px;
+  height: 11px;
+  flex: 0 0 11px;
+  stroke: var(--muted);
+  opacity: .78;
+  transform: translateY(0);
+}
+.contact-separator {
+  display: none;
+}
+.contact-separator + .contact-item {
+  position: relative;
+  padding-left: var(--space-3);
+}
+.contact-separator + .contact-item::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 1px;
+  height: 10px;
+  background: var(--line);
+  transform: translateY(-50%);
+}
+.summary {
+  display: flex;
+  align-items: center;
+  height: 45px;
+  margin-top: var(--space-4);
+  padding: 0 var(--space-4);
+  border-left: 3px solid var(--green);
+  background: var(--tag-bg);
+  color: var(--ink);
+  font: 500 12.2px/1.35 var(--sans);
+}
+.columns {
+  display: grid;
+  grid-template-columns: 443px 239px;
+  gap: 31px;
+  margin-top: var(--space-6);
+}
+.section { margin: 0; }
+.section + .section { margin-top: var(--space-4); }
+.section-title {
+  margin: 0 0 var(--space-3);
+  padding-bottom: var(--space-2);
+  border-bottom: 2px solid var(--green);
+  color: var(--ink);
+  font: 700 12px/1 var(--mono);
+  letter-spacing: .5px;
+}
+.subsection-title {
+  margin: 0 0 var(--space-2);
+  color: var(--ink);
+  font: 700 11px/1 var(--mono);
+  letter-spacing: .4px;
+}
+.skill-group + .skill-group { margin-top: var(--space-4); }
+.tags,
+.skill-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1);
+}
+.tag {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 22px;
+  padding: 1px var(--space-3) 0;
+  background: var(--tag-bg);
+  color: var(--green-dark);
+  font: 500 10.2px/1.15 var(--mono);
+  white-space: nowrap;
+}
+.tag.compact {
+  height: 18px;
+  padding: 1px var(--space-3) 0;
+  font-size: 9.8px;
+}
+.job { padding-bottom: var(--space-3); }
+.job + .job {
+  padding-top: var(--space-3);
+  border-top: 1px solid var(--line);
+}
+.job-head {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: baseline;
+  gap: var(--space-2);
+}
+.job-title {
+  margin: 0;
+  color: var(--ink);
+  font: 700 13.4px/1.2 var(--sans);
+}
+.date {
+  color: var(--muted);
+  font: 500 10.4px/1.2 var(--mono);
+  white-space: nowrap;
+}
+.company {
+  margin-top: var(--space-1);
+  color: var(--green);
+  font: 700 12.4px/1.2 var(--sans);
+}
+.bullet-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.bullet-list li { position: relative; }
+.bullet-list li::before {
+  content: "";
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: var(--green);
+}
+.job-points { margin: var(--space-2) 0; }
+.job-points li {
+  margin: var(--space-1) 0;
+  padding-left: var(--space-4);
+  font: 400 11.7px/1.38 var(--sans);
+}
+.job-points li::before { left: 2px; top: .55em; }
+.job-tags { margin-top: var(--space-2); }
+.languages { display: grid; gap: var(--space-2); }
+.language {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-size: 11.7px;
+}
+.language-level { color: var(--muted); font-weight: 600; }
+.link-list,
+.interest-list { margin: 0; }
+.link-list li,
+.interest-list li {
+  padding-left: var(--space-3);
+  margin: var(--space-2) 0;
+  font: 400 11.2px/1.28 var(--sans);
+}
+.link-list li::before,
+.interest-list li::before { left: 0; top: .48em; }
+.link-list a {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-2);
+  width: 100%;
+  text-decoration: none;
+}
+.link-copy { min-width: 0; padding-right: var(--space-1); }
+.external {
+  flex: 0 0 auto;
+  margin-left: auto;
+  color: var(--green);
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-top: 1px;
+  text-decoration: none;
+}
+.education-item {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: var(--space-1) var(--space-3);
+  padding: 0 0 var(--space-3);
+}
+.education-item + .education-item {
+  padding-top: var(--space-3);
+  border-top: 1px solid var(--line);
+}
+.degree { color: var(--ink); font: 700 12.4px/1.25 var(--sans); }
+.school { grid-column: 1; color: var(--green); font: 700 11.7px/1.25 var(--sans); }
+.education-item .date { grid-column: 2; grid-row: 1; }
+.cert-note { display: block; margin-top: 2px; }
+@media print {
+  @page { size: A4; margin: 0; }
+  body { background: #fff; }
+  .page { margin: 0; box-shadow: none; width: 210mm; height: 297mm; }
+  .right-column .section + .section { margin-top: var(--space-3); }
+  .right-column .skill-group + .skill-group { margin-top: var(--space-3); }
+}
+</style>
+</head>
+<body>
+<main class="page">
+<header>
+<h1 class="header-name">BARTŁOMIEJ PIEPER</h1>
+<div class="header-role">Senior .NET Developer | AI</div>
+<div aria-label="Contact information" class="contact-row">
+<a class="contact-item" href="tel:+48509871127">
+<svg aria-hidden="true" fill="none" stroke="#5b626b" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.12.9.33 1.78.62 2.63a2 2 0 0 1-.45 2.11L8 9.73a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.85.29 1.73.5 2.63.62A2 2 0 0 1 22 16.92z"></path></svg>
+        +48 509 871 127
+      </a>
+<span aria-hidden="true" class="contact-separator"></span>
+<a class="contact-item" href="mailto:bartlomiejpieper@gmail.com">
+<svg aria-hidden="true" fill="none" stroke="#5b626b" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><rect height="14" rx="2" width="18" x="3" y="5"></rect><path d="m3 7 9 6 9-6"></path></svg>
+        bartlomiejpieper@gmail.com
+      </a>
+<span aria-hidden="true" class="contact-separator"></span>
+<a class="contact-item" href="https://bartlomiejpieper.com/">
+<svg aria-hidden="true" fill="none" stroke="#5b626b" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><path d="M3 12h18M12 3a15 15 0 0 1 0 18M12 3a15 15 0 0 0 0 18"></path></svg>
+        bartlomiejpieper.com
+      </a>
+<span aria-hidden="true" class="contact-separator"></span>
+<span class="contact-item">
+<svg aria-hidden="true" fill="none" stroke="#5b626b" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><path d="M20 10c0 5-8 12-8 12S4 15 4 10a8 8 0 1 1 16 0z"></path><circle cx="12" cy="10" r="2.5"></circle></svg>
+        Warsaw
+      </span>
+</div>
+<div class="summary">Senior backend engineer with a background in mathematics and finance, designing and building scalable .NET systems.</div>
+</header>
+<div class="columns">
+<div class="left-column">
+<section class="section">
+<h2 class="section-title">EXPERIENCE</h2>
+<article class="job">
+<div class="job-head"><h3 class="job-title">.NET / C# Developer</h3><span class="date">10/2024 – 03/2026</span></div>
+<div class="company">Citi</div>
+<ul class="bullet-list job-points"><li>Designed and implemented an FX processing layer integrating transaction data from multiple sources and routing it to accounting, downstream systems, and reporting.</li><li>Built an institutional FX platform supporting currency accounts, FX conversions, and quoting workflows across backend services and React UI.</li></ul>
+<div class="tags job-tags"><span class="tag compact">C#</span><span class="tag compact">React</span><span class="tag compact">SQL Server</span><span class="tag compact">Microservices</span><span class="tag compact">GitHub Copilot</span></div>
+</article>
+<article class="job">
+<div class="job-head"><h3 class="job-title">.NET / F# / C# Developer</h3><span class="date">01/2021 – 09/2024</span></div>
+<div class="company">CyberVadis / EcoVadis</div>
+<ul class="bullet-list job-points">
+<li>Designed and built a cybersecurity web application in microservices architecture.</li>
+<li>Key projects: Screening • Certificates • Documents Management</li>
+</ul>
+<div class="tags job-tags"><span class="tag compact">F#</span><span class="tag compact">C#</span><span class="tag compact">Angular</span><span class="tag compact">SQL Server</span><span class="tag compact">Azure</span><span class="tag compact">DDD</span><span class="tag compact">Microservices</span></div>
+</article>
+<article class="job">
+<div class="job-head"><h3 class="job-title">Quant Team Lead → .NET / C# Developer</h3><span class="date">12/2016 – 12/2020</span></div>
+<div class="company">WealthArc</div>
+<ul class="bullet-list job-points">
+<li>Led the quant team, then built core features for a wealth-management cloud platform.</li>
+<li>Key projects: Portfolio Opening/Closing • Consolidation • Rebalancing • Retrocession Fees • High Water Marks • Time Weighted Return</li>
+</ul>
+<div class="tags job-tags"><span class="tag compact">C#</span><span class="tag compact">SQL Server</span><span class="tag compact">Azure</span><span class="tag compact">MVC</span><span class="tag compact">Entity Framework</span><span class="tag compact">LINQ</span></div>
+</article>
+<article class="job">
+<div class="job-head"><h3 class="job-title">Analyst</h3><span class="date">2013 – 2016</span></div>
+<div class="company">Bank BPH, Deutsche Bank, PKO BP</div>
+<ul class="bullet-list job-points">
+<li>Built credit-risk models and financial reporting solutions.</li>
+<li>Automated reporting processes.</li>
+<li>Supported audit and risk-management teams in banking operations.</li>
+</ul>
+<div class="tags job-tags"><span class="tag compact">SQL</span><span class="tag compact">VBA</span></div>
+</article>
+</section>
+<section class="section education-section">
+<h2 class="section-title">EDUCATION</h2>
+<div class="education-item"><div class="degree">Computer Science, Engineer's degree</div><span class="date">2016 – 2021</span><div class="school">Polish-Japanese Academy of Information Technology</div></div>
+<div class="education-item"><div class="degree">Mathematics, Bachelor's degree</div><span class="date">2009 – 2014</span><div class="school">University of Warsaw</div></div>
+<div class="education-item"><div class="degree">IT and Econometrics, Bachelor's degree</div><span class="date">2009 – 2013</span><div class="school">University of Warsaw</div></div>
+</section>
+</div>
+<aside class="right-column">
+<section class="section">
+<h2 class="section-title">SKILLS</h2>
+<div class="skill-group"><h3 class="subsection-title">BACKEND</h3><div class="tags skill-tags"><span class="tag">C#</span><span class="tag">F#</span><span class="tag">ASP.NET</span><span class="tag">SQL Server</span></div></div>
+<div class="skill-group"><h3 class="subsection-title">FRONTEND</h3><div class="tags skill-tags"><span class="tag">React</span><span class="tag">TypeScript</span></div></div>
+<div class="skill-group"><h3 class="subsection-title">ARCHITECTURE</h3><div class="tags skill-tags"><span class="tag">Microservices</span><span class="tag">DDD</span><span class="tag">SOLID</span><span class="tag">REST APIs</span></div></div>
+<div class="skill-group"><h3 class="subsection-title">DEVOPS &amp; CLOUD</h3><div class="tags skill-tags"><span class="tag">Docker</span><span class="tag">Git</span><span class="tag">CI/CD</span><span class="tag">Azure Service Bus</span><span class="tag">Azure Functions</span></div></div>
+<div class="skill-group"><h3 class="subsection-title">AI</h3><div class="tags skill-tags"><span class="tag">LLMs</span><span class="tag">RAG</span><span class="tag">AI Agents</span><span class="tag">Codex</span></div></div>
+</section>
+<section class="section">
+<h2 class="section-title">LANGUAGES</h2>
+<div class="languages"><div class="language"><span>English</span><span class="language-level">C1</span></div><div class="language"><span>Spanish</span><span class="language-level">B1</span></div><div class="language"><span>Polish</span><span class="language-level">Native</span></div></div>
+</section>
+<section class="section">
+<h2 class="section-title">CERTIFICATES</h2>
+<ul class="bullet-list link-list">
+<li><a href="https://credsverse.com/credentials/66f47e7a-c7d5-43f3-9e9f-9a1d3d4dc7fa"><span class="link-copy">AI_DEVS 3 – Agents Reloaded</span><span aria-hidden="true" class="external">↗</span></a></li>
+<li><a href="https://app.diplomasafe.com/pl-PL/diploma/d55e7a6d48b8803406179acf0e2a1e51f31af1c95"><span class="link-copy">AI Advanced ML/DL</span><span aria-hidden="true" class="external">↗</span></a></li>
+<li><a href="https://learn.microsoft.com/en-gb/users/bartomiejpepper-9870/credentials/695f33e7369055db"><span class="link-copy">MS Certified: Data Scientist Associate<span class="cert-note">(DP-100) </span></span><span aria-hidden="true" class="external">↗</span></a></li>
+<li><a href="https://learn.microsoft.com/en-us/users/bartomiejpepper-9870/credentials/ff0f97b23698481a"><span class="link-copy">MS Certified: AI Fundamentals (AI-102)</span><span aria-hidden="true" class="external">↗</span></a></li>
+<li><a href="https://www.credly.com/badges/f83fe6df-dc91-4a7e-a3ba-b168d25d40c9/linked_in_profile"><span class="link-copy">MS Certified: Azure Fundamentals<span class="cert-note">(AZ-900) </span></span><span aria-hidden="true" class="external">↗</span></a></li>
+</ul>
+</section>
+<section class="section">
+<h2 class="section-title">ACHIEVEMENTS</h2>
+<ul class="bullet-list link-list"><li><a href="https://owe.pte.pl/upload/files/uczestnicy/laureaci/xxii-owe-laureaci.pdf"><span class="link-copy">Laureate of the 22nd Economic Olympiad<span class="cert-note">— 15th nationwide in Poland. </span></span><span aria-hidden="true" class="external">↗</span></a></li></ul>
+</section>
+<section class="section">
+<h2 class="section-title">BEYOND THE CODE</h2>
+<ul class="bullet-list interest-list"><li>Theatre Improvisation</li><li>Neuroscience &amp; Personal Optimization</li><li>Brazilian Zouk</li><li>Sailing &amp; Swimming</li></ul>
+</section>
+</aside>
+</div>
+</main>
+</body>
+</html>
