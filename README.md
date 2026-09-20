@@ -3,6 +3,8 @@
 A responsive, single-page portfolio with experience, technology stack, education,
 certifications, contact links, and a downloadable CV.
 
+Live site: [bartlomiejpieper.com](https://bartlomiejpieper.com/)
+
 The site helps recruiters, hiring managers, and potential clients assess
 professional experience and skills and find the relevant contact information.
 
